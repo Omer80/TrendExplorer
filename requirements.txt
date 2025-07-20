@@ -1,2 +1,9 @@
+# requirements.txt
+
 streamlit
-pandas
+pandas>=2.0
+numpy>=1.24
+statsmodels>=0.14
+scikit-learn>=1.2
+scipy>=1.10
+plotly>=5.14

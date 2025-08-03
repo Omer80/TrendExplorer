@@ -49,11 +49,21 @@ def load_json_to_df(uploaded_file, gmt_offset_hours: int = 3) -> pd.DataFrame:
 st.title("TrendScope: Time-Series Trend Analyzer")
 
 uploaded = st.file_uploader("Upload your JSON time-series file", type="json")
+
 if uploaded is not None:
     df = load_json_to_df(uploaded)
 
     st.subheader("Raw data preview")
     st.dataframe(df.head())
+
+    # Add download button for full DataFrame as CSV
+    csv_full = df.to_csv().encode("utf-8")
+    st.download_button(
+        label="Download full data as CSV",
+        data=csv_full,
+        file_name="full_data.csv",
+        mime="text/csv"
+    )
 
     # -------------------------------------------------------------------------
     # Let user pick which numeric columns to plot
